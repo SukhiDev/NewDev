@@ -2,12 +2,18 @@ pipeline {
     agent any
 
     stages {
+
+
+
+
+
+
         stage ('Compile Stage') {
 
             steps {
                     withMaven (maven : maven_3_8_6) {
 
-                                        sh 'mvn clean compile'
+                                        bat 'mvn clean compile'
                     }
             }
         }
@@ -16,7 +22,7 @@ pipeline {
 
             steps {
                     withMaven (maven : maven_3_8_6) {
-                    sh 'mvn test' }
+                    bat 'mvn test' }
 
             }
         }
@@ -25,7 +31,7 @@ pipeline {
         stage ('Deployment Stage') {
             steps {
                 withMaven (maven : maven_3_8_6) {
-                    sh 'mvn deploy'
+                    bat 'mvn deploy'
                 }
             }
         }
